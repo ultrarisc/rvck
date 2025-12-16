@@ -54,6 +54,7 @@ source "drivers/staging/nvec/Kconfig"
 
 source "drivers/staging/media/Kconfig"
 
+source "drivers/staging/android/Kconfig"
 source "drivers/staging/board/Kconfig"
 
 source "drivers/staging/gdm724x/Kconfig"
@@ -78,4 +79,13 @@ source "drivers/staging/qlge/Kconfig"
 
 source "drivers/staging/vme_user/Kconfig"
 
+source "drivers/staging/hilog/Kconfig"
+
+source "drivers/staging/hievent/Kconfig"
+
+source "drivers/staging/hisysevent/Kconfig"
+
+source "drivers/staging/zerohung/Kconfig"
+
+source "drivers/staging/hungtask/Kconfig"
 endif # STAGING
