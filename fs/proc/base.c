@@ -3245,6 +3245,15 @@ static int proc_pid_patch_state(struct seq_file *m, struct pid_namespace *ns,
 }
 #endif /* CONFIG_LIVEPATCH */
 
+#ifdef CONFIG_ACCESS_TOKENID
+static int proc_token_operations(struct seq_file *m, struct pid_namespace *ns,
+				 struct pid *pid, struct task_struct *task)
+{
+	seq_printf(m, "%#llx %#llx\n", task->token, task->ftoken);
+	return 0;
+}
+#endif /* CONFIG_ACCESS_TOKENID */
+
 #ifdef CONFIG_KSM
 static int proc_pid_ksm_merging_pages(struct seq_file *m, struct pid_namespace *ns,
 				struct pid *pid, struct task_struct *task)
@@ -3398,6 +3407,9 @@ static const struct pid_entry tgid_base_stuff[] = {
 	REG("timerslack_ns", S_IRUGO|S_IWUGO, proc_pid_set_timerslack_ns_operations),
 #ifdef CONFIG_LIVEPATCH
 	ONE("patch_state",  S_IRUSR, proc_pid_patch_state),
+#endif
+#ifdef CONFIG_ACCESS_TOKENID
+	ONE("tokenid", S_IRUSR, proc_token_operations),
 #endif
 #ifdef CONFIG_STACKLEAK_METRICS
 	ONE("stack_depth", S_IRUGO, proc_stack_depth),
@@ -3743,6 +3755,9 @@ static const struct pid_entry tid_base_stuff[] = {
 #endif
 #ifdef CONFIG_PROC_PID_ARCH_STATUS
 	ONE("arch_status", S_IRUGO, proc_pid_arch_status),
+#endif
+#ifdef CONFIG_ACCESS_TOKENID
+	ONE("tokenid", S_IRUSR, proc_token_operations),
 #endif
 #ifdef CONFIG_SECCOMP_CACHE_DEBUG
 	ONE("seccomp_cache", S_IRUSR, proc_pid_seccomp_cache),
