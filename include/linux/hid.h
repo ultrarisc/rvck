@@ -685,6 +685,9 @@ struct hid_device {							/* device report descriptor */
 	struct kref			ref;
 
 	unsigned int id;						/* system unique id */
+#ifdef CONFIG_DRIVERS_HDF_INPUT
+	void *input_dev;
+#endif
 
 #ifdef CONFIG_BPF
 	struct hid_bpf bpf;						/* hid-bpf data */

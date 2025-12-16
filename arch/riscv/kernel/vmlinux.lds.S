@@ -85,6 +85,13 @@ SECTIONS
 	/* Start of init data section */
 	__init_data_begin = .;
 	INIT_DATA_SECTION(16)
+#ifdef CONFIG_DRIVERS_HDF
+	.init.hdf_table : {
+		_hdf_drivers_start = .;
+		*(.hdf.driver)
+		_hdf_drivers_end = .;
+	}
+#endif
 
 	.init.pi : {
 		KEEP(*(.init.pi*))
