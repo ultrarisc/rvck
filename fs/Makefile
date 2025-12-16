@@ -63,6 +63,8 @@ obj-$(CONFIG_NETFS_SUPPORT)	+= netfs/
 obj-$(CONFIG_FSCACHE)		+= fscache/
 obj-$(CONFIG_REISERFS_FS)	+= reiserfs/
 obj-$(CONFIG_EXT4_FS)		+= ext4/
+obj-$(CONFIG_HMDFS_FS)          += hmdfs/
+obj-$(CONFIG_SHARE_FS)		+= sharefs/
 # We place ext4 before ext2 so that clean ext3 root fs's do NOT mount using the
 # ext2 driver, which doesn't know about journalling!  Explicitly request ext2
 # by giving the rootfstype= parameter.
@@ -129,3 +131,4 @@ obj-$(CONFIG_EFIVAR_FS)		+= efivarfs/
 obj-$(CONFIG_EROFS_FS)		+= erofs/
 obj-$(CONFIG_VBOXSF_FS)		+= vboxsf/
 obj-$(CONFIG_ZONEFS_FS)		+= zonefs/
+obj-$(CONFIG_EPFS)		+= epfs/
